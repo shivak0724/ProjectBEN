@@ -1,0 +1,160 @@
+<div class="row">
+    <div class="col-md-12">
+      <div class="row cust-tabs">
+        <div class="container">
+          <div class="row ">
+            <div class="col-md-12 text-center" style="margin-left:-2px">
+                <div data-toggle="buttons" style="margin-top:2px">
+                  <label class="search-by-lbl" style="margin-left:0px">Search by:</label>
+                  <div style="float:right">
+              <label class="btn btn-primary btn-radio" id="radio1" [ngClass]="{'active-tab': SelectedItem=='Employer Name'}" 
+              (click)="searchselect('Employer Name')">
+                    <label class="container">
+                      <input type="radio" name="options" [ngClass]="{'active': SelectedItem=='Employer Name'}" id="option1" 
+                      [checked]="SelectedItem=='Employer Name'">
+                      Employer Name<!-- <span class="checkmark"></span> -->
+                    </label>
+                  </label>
+              <label class="btn btn-secondary btn-radio" id="radio2" [ngClass]="{'active-tab': SelectedItem=='Phone Number'}"
+               (click)="searchselect('Phone Number')">
+                    <label class="container">
+                      <input type="radio" [ngClass]="{'active': SelectedItem=='Phone Number'}" name="options" id="option2">
+                      Phone Number<!-- <span class="checkmark"></span> -->
+                    </label>
+                  </label>
+              <label class="btn btn-secondary btn-radio" id="radio3" [ngClass]="{'active-tab': SelectedItem=='Email'}"
+               (click)="searchselect('Email')">
+                    <label class="container">
+                <input type="radio" [ngClass]="{'active': SelectedItem=='Email'}" name="options" id="option3">
+                Email <!-- <span class="checkmark"></span> -->
+                    </label>
+                  </label>
+              <label class="btn btn-secondary btn-radio" id="radio4" [ngClass]="{'active-tab': SelectedItem=='Zip Code'}" 
+              (click)="searchselect('Zip Code')">
+                    <label class="container">
+                      <input type="radio" [ngClass]="{'active': SelectedItem=='Zip Code'}" name="options" id="option4">
+                      Zip Code<!-- <span class="checkmark"></span> -->
+                    </label>
+                  </label>
+              
+                </div>
+                </div>
+              </div>
+  
+          </div>
+        </div>
+      </div>
+  
+      <div class="container">
+        <div class="row" style=" margin-top: 30px;">
+          <div class="col-md-12 text-center">
+  
+            <label *ngIf="SelectedItem!='by name'" class="lbl-clr sprk-b-Heading container-lbl-1 sprk-b-Heading--secondary label-heading">
+              {{SelectedItem}}</label>
+  
+            <div class="input-group" style=" width: 100%;float:left">
+  
+              <input type="text" [textMask]="{mask: mask}" *ngIf="SelectedItem!='State'" class="container-input form-control" id="searchText"
+                autofocus (keypress)="restrictNumeric($event)" [(ngModel)]="searchitem" (ngModelChange)="showNodata=false" placeholder="Enter Search Criteria"
+                (keydown)="keyDownFunction($event)" [ngClass]="{'error-input': showNodata && !searchitem}">
+  
+          
+              <span style="margin-left:11px">
+                <button class="btn btn-primary btn-search-new search" id="btnSearch" style="width: 126px;" type="button" 
+                id="btnSearch" (click)="onScreenSearchData()">
+                  <i class="fa fa-search" aria-hidden="true"></i> Search 
+                </button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="container" *ngIf="showNodata">
+        <div class="row ">
+          <div class="col-md-12 searchres-label" style="margin-top:15px " 
+          *ngIf="showNodata">
+            <div class="col-md-10" style="margin-left: 15%;" *ngIf="!searchitem">
+              <div class="error-msg">
+                {{errorMsg}}
+              </div>
+            </div>
+            <span *ngIf="searchitem" id="spnNoData" style="width: 61%;float: left;" class="col-md-12 sprk-b-Heading sprk-b-Heading--secondary search-heading no-res">
+              No search results found for
+              <strong>{{searchitem}}</strong>.
+              <br>
+              <span>Please Try Again</span>
+            </span>
+          </div>
+        </div>
+      </div>
+  
+      <!-- <hr class="separation-tag" *ngIf="!showNodata&&displayState"> -->
+    </div>
+  
+  
+    <div class="container">
+  
+  
+    <div style="height: 30px;" *ngIf="errormessage && successtype !== 'success'"> </div>
+    <div class="sprk-c-Notification notification-msg" *ngIf="errormessage && successtype !== 'success'">
+      <div class="sprk-c-Notification__icon sprk-c-Notification__icon--failure">
+        <svg xmlns="http://www.w3.org/2000/svg" id="exclamation" style="width: 24px; height: 20px; fill:white;" viewBox="0 0 1792 1792"
+          width="100%" height="100%">
+          <path style="color: white;" d="M 1088 1248 v 224 q 0 26 -19 45 t -45 19 H 768 q -26 0 -45 -19 t -19 -45 v -224 q 0 -26 19 -45 t 45 -19 h 256 q 26 0 45 19 t 19 45 Z m 30 -1056 l -28 768 q -1 26 -20.5 45 t -45.5 19 H 768 q -26 0 -45.5 -19 T 702 960 l -28 -768 q -1 -26 17.5 -45 t 44.5 -19 h 320 q 26 0 44.5 19 t 17.5 45 Z"
+          />
+        </svg>
+      </div>
+      <div class="sprk-c-Notification__text">
+        <span>{{errorMsg}}</span>
+      </div>
+      <button class="sprk-c-Notification__icon sprk-c-Notification__icon--close" (click)="errormessage = false" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 20px; fill:black;" viewBox="0 0 1792 1792" id="times"
+          width="100%" height="100%">
+          <path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"></path>
+        </svg>
+      </button>
+    </div>
+  
+      <div class="row  txt-search">
+        <div class="row" style="width:100%">
+          <div class="col-md-9 searchres-label"></div>
+          
+          <div class="col-md-9" style="color:#4f4b4b" *ngIf="searchdataResult.length > 0">
+            <span>Showing {{startitem}}-{{lastitem}} of {{searchdataResult.length}} results for
+              <strong>{{searchitem}}</strong>
+            </span>
+          </div>
+  
+  
+        </div>
+        <div  class="col-md-12 search-res" *ngFor="let data of searchdataResult|
+         paginate: { itemsPerPage: itemsPerPage, currentPage: p }" (click)="selectdata(data.organizationId)">
+          <div class="col-md-12 form-group">
+              <label class="lbl-clr sprk-b-Heading label-heading label-name  s-result">
+                  <strong style="margin-left: -13px;">{{data.name}}</strong>
+                </label>
+                <label>
+                    {{getUserAddress(data)}}
+                </label>
+           
+          </div>
+          <div class="col-md-12" class="padding-zero">
+            <label class="lbl-clr sprk-b-Heading--secondary">
+              <b class="icon-clr s-result">Contact Phone :</b> {{data.contactPhoneNumber}}</label>
+            <label class="lbl-clr sprk-b-Heading--secondary s-result">
+              <b class="icon-clr s-result">Contact Email :</b> {{data.contactEmail}}</label>
+            
+          </div>
+          <div class="col-md-12" class="seperator"></div>
+        </div>
+  <div class="col-md-12">
+  <div *ngIf="searchdataResult !== null" style="margin-left:20%">
+        <div id="spnData" class="pagination-centered" *ngIf="searchdataResult.length>0">
+          <pagination-controls style="margin: 0 auto;" (pageChange)="pagechange($event)" [maxSize]="5" previousLabel="Prev" nextLabel="Next"></pagination-controls>
+        </div>
+      </div>
+  </div>
+    </div>
+  </div>
+  </div>

@@ -1,0 +1,254 @@
+.btn-radio{
+    border: 1px solid #337ab7;
+    background-color: #fff;
+    color: #1E7AB3;
+    margin-left: 30px;
+    margin-bottom: 20px;
+    }
+    
+    .btn-radio.active{
+        border: 1px solid #337ab7 !important;
+        background-color: #337ab7 !important;
+        color: #fff !important;
+        border-color: #337ab7 !important;
+        box-shadow: none !important;
+        }
+        /* .btn-radio input[type="radio"]
+        {
+            position: inherit;
+            margin-top: 3px;
+        
+        } */
+        .input-search
+        {
+            width: 30%;
+            margin: 0 auto;
+        }
+.small
+{
+    display:block; 
+    font-size:12px; 
+    letter-spacing:3px;
+}
+h2
+{
+    font-weight: bold;
+}
+.error-msg 
+{
+    color: #a94442;
+}
+.error-input
+{
+    border: 1px solid #af5c6a;
+    background-color: #fdf;
+}
+/* input[type='radio']:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;    
+    border-radius:50%;    
+  }   */
+  .btn-hover:hover,.btn-hover:focus,.btn-hover:active {
+    color: #333;
+    background-color: #ffffff;
+    border-color: #ddd;
+}
+.btn-hover{
+    border-color: #ddd !important;
+}
+
+.btn
+{
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.error-input-btn
+{
+    border: 1px solid #af5c6a !important;
+    background-color: #fdf !important;
+    border-left: none !important;
+}
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none;
+}
+.btn-radio { position: relative; top: -1px; margin-right: 6px; }
+.btn { border: 1px solid #aaa; }
+.form-control, .input-search .btn{ line-height: 2.5; padding: 0.5em 1em; }
+.input-search{ width: 57%; margin: 1.25em auto; }
+.btn-radio{ padding: 0.75em 2em; }
+
+.btn-search-new
+{
+    background-color: #6c9f2e !important;
+    border-color: #6c9f2e;    
+}
+
+input[type="text"] 
+{
+    border-top-right-radius:  .25rem !important;
+    border-bottom-right-radius: .25rem !important;
+    border-top-left-radius:  .25rem !important;
+    border-bottom-left-radius: .25rem !important;
+}
+.lbl-clr
+{
+    color: #1E7AB3;
+}
+.lbl-1
+{
+    margin-left: 12%;
+    text-align: left;
+    width: 100%;
+}
+.lbl-3
+{
+    width: 52%;
+    margin-right: 17%;
+}
+
+.btn-radio{
+    border: none;
+    background-color: #1E7AB3  !important;
+    color: #fff  !important;
+    margin-left: 0px;
+    margin-bottom: 0px;
+    top: 0px;
+    border-radius: 0px;
+}
+.cust-tabs
+{
+    background-color: #1E7AB3 !important;
+}
+.active-tab
+{
+    background-color:#fff  !important;
+    color: #1E7AB3  !important;
+}
+.btn-primary:not([disabled]):not(.disabled).active, .btn-primary:not([disabled]):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #1E7AB3;
+    border-color:none;
+    box-shadow: none;
+}
+
+.active-tab>.container{
+    color: #1E7AB3  !important;
+}
+
+/* The container */
+.container {
+    color: #fff;
+    display: block;
+    position: relative;
+    padding-left: 25px;
+    /* margin-bottom: 12px; */
+    cursor: pointer;
+    /* margin-top: -52px; */
+    /* font-size: 22px; */
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* top: 84px; */
+    /* left: 47px; */
+    width: 100%;
+    padding-top: -51px;
+}
+
+/* Hide the browser's default radio button */
+/* .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+} */
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 15px;
+    width: 15px;
+    background-color: #eee;
+    border-radius: 50%;
+    /* padding-top: 24px; */
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+    top: 3px;
+    left: 3px;
+    width: 9px;
+    height: 8px;
+    border-radius: 50%;
+    background: white;
+}
+.sprk-b-Label, label {
+    font-size: ms(1);
+    font-weight: normal;
+     ; 
+}
+.searchby-lbl
+{
+    color: #fff;
+    margin-right: 17%;
+}
+.search-adj
+{
+    margin-top: 2px;    
+    margin-right: 16%;
+    width: 72%;
+}
+.search-by-lbl
+{
+    float: left;
+    color: #fff;
+    margin-left: 1%;
+    margin-top: 1%;
+}
+.container-input
+{
+    position: inherit !important;
+    opacity: inherit !important;
+}
+
+.container-lbl-1
+{
+    text-align: left;
+    width: 98%;
+}
+.container-lbl-3
+{
+    width: 74%;
+    margin-right: 17%;
+}
+.pointer
+{
+    cursor: pointer;
+}

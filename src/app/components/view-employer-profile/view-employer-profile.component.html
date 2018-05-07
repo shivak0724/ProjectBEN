@@ -1,0 +1,194 @@
+<app-header isAddNewLinkReq="True"></app-header>
+<app-search-employer></app-search-employer>
+<div>
+      <hr class="separation-tag" style="margin-top: 20px;margin-bottom:0px">
+<div class="background"> 
+  
+  <form class="container">
+     
+  <div class="row">
+    <div class="col-md-12" >
+      
+      <h1 class="col-md-10  float-left sprk-b-Heading sprk-b-Heading--secondary label-main-heading" style="margin-top: 20px;">
+      {{employername}}
+      </h1>
+      <button type="button" class="btn btn-primary col-md-2" 
+      (click)="onSubmit()" id="submitTop" style="margin-top:20px;">
+      <i class="fa fa-pencil" aria-hidden="true"></i>Edit Employer</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="list-group" >
+          <div class="panel-heading sprk-b-Heading list-group-item">
+            <h3>
+              <b class="label-sub-heading">Employer Information</b>
+            </h3>
+          </div>
+      
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Employer Name</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{employername}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Street Address</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{addressline1}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr  sprk-b-Heading sprk-b-Heading--secondary label-heading">Street Address Line 2(optional)</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{addressline2}}</label>
+                </div>
+              </div>
+            </div>
+
+           
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">City</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{city}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">State </label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{state}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Zip Code</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{zip}}</label>
+                </div>
+              </div>
+            </div>
+         
+
+         
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Zip+4 Digits (optional)</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{plus4}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact First Name</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contactfirstname}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Last Name</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contactlastname}}</label>
+                </div>
+              </div>
+            </div>
+          
+
+          
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Title</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contacttitle}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Phone Number</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contactphonenumber}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Phone Extension</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{phoneextension}}</label>
+                </div>
+              </div>
+            </div>
+         
+
+         
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Fax Number(optional)</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contactfaxnumber}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Email</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{contactemail}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Response Time</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{responsetime}} Business Days</label>
+                </div>
+              </div>
+            </div>
+          
+
+         
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">EIN (optional)</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{ein}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                  <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Cert And Auth Required</label>
+                  <br>
+                  <label class="lbl-name sprk-b-Heading">{{certandauthrequired}}</label>
+                </div>
+                <div class="form-group col-md-4 float-left">
+                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Email for Email Request</label>
+                    <br>
+                    <label class="lbl-name sprk-b-Heading">{{emailrequesteligible}}</label>
+                </div>                 
+              </div>
+            </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group col-md-4 float-left">
+                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Phone Verified By</label>
+                    <br>
+                    <label class="lbl-name sprk-b-Heading">{{phoneverifiedby}}</label>
+                  </div>
+                </div>
+              </div>
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group col-md-4 float-left">
+                      <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Comments</label>
+                      <br>
+                      <label class="lbl-name sprk-b-Heading">{{comments}}</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group col-md-12 float-left">
+                                            <br>
+                      <label style="font-weight:lighter" class="lbl-name">Last updated by {{contactfirstname}} {{contactlastname}} on {{lastupdatedate}}</label>
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row" style="margin-bottom:17px">
+                <div class="col-md-12">
+                  <h2 class="col-md-10 float-left"></h2>
+                  <button type="button" id="submitBottom" class="btn btn-primary col-md-2 float-left" style="margin-top: 20px;" (click)="onSubmit()">
+                    <i class="fa fa-pencil" aria-hidden="true"></i> Edit Employer</button>
+                </div>
+              </div>

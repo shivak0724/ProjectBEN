@@ -1,0 +1,69 @@
+<app-header isAddNewLinkRequired="False"></app-header>
+
+<div>
+
+  <div class="cust-tabs">
+    <div class="container">
+      <div class="row ">
+
+        <div class="col-md-12 text-center">
+          <div data-toggle="buttons" style="margin-top:2px">
+            <label class="search-by-lbl" style="margin-left:0px">Search by:</label>
+            <div style="float:right">
+              <label class="btn btn-primary btn-radio" id="radio1" [ngClass]="{'active-tab': searchtype==1}" (click)="searchtypeselect(1)">
+                <label class="container">
+                  <input type="radio" name="options" [ngClass]="{'active': searchtype==1}" id="option1" [checked]="searchtype==1"> Employer Name
+                  <!-- <span class="checkmark"></span> -->
+                </label>
+              </label>
+              <label class="btn btn-secondary btn-radio" id="radio2" [ngClass]="{'active-tab': searchtype==2}" (click)="searchtypeselect(2)">
+                <label class="container">
+                  <input type="radio" [ngClass]="{'active': searchtype==2}" name="options" id="option2"> Phone Number
+                  <!-- <span class="checkmark"></span> -->
+                </label>
+              </label>
+              <label class="btn btn-secondary btn-radio" id="radio3" [ngClass]="{'active-tab': searchtype==3}" (click)="searchtypeselect(3)">
+                <label class="container">
+                  <input type="radio" [ngClass]="{'active': searchtype==3}" name="options" id="option3"> Email
+                  <!-- <span class="checkmark"></span> -->
+                </label>
+              </label>
+              <label class="btn btn-secondary btn-radio" id="radio4" [ngClass]="{'active-tab': searchtype==4}" (click)="searchtypeselect(4)">
+                <label class="container">
+                  <input type="radio" [ngClass]="{'active': searchtype==4}" name="options" id="option4"> Zip Code
+                  <!-- <span class="checkmark"></span> -->
+                </label>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row" style=" margin-top: 30px;">
+      <div class="col-md-12 text-center">
+        <label class="lbl-clr sprk-b-Heading container-lbl-1 sprk-b-Heading--secondary label-heading">
+          {{(searchtype==1 &&'Employer Name')|| (searchtype==2 &&'Phone Number'|| (searchtype==3 &&'Email')|| (searchtype==4 &&'Zip
+          Code')||'State')}}</label>
+        <div class="input-group input-search " style="margin-top:2px; width: 100%;float:left">
+          <input type="text" *ngIf="searchtype!=5" id="searchstr" [textMask]="{mask: mask}" class="container-input form-control" [ngClass]="{'error-input': showError}"
+            (keydown)="keyDownFunction($event)" [(ngModel)]="searchitem" (ngModelChange)="showError=false" autofocus>
+
+
+          <span style="margin-left:11px">
+            <button class="btn btn-primary btn-search-new pointer" style="width: 126px;" id="btnSearch" type="button" id="btnSearch"
+              (click)="search()">
+              <i class="fa fa-search " aria-hidden="true"></i> Search
+            </button>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="margin-left:10px;text-align:left" *ngIf="showError">
+      <div class="error-msg" style="width:100%">
+        Please enter search criteria
+      </div>
+    </div>
+  </div>
+</div>

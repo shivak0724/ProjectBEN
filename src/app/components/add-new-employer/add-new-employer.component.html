@@ -1,0 +1,378 @@
+<app-header isAddNewLinkReq="True"></app-header>
+<app-search-employer></app-search-employer>
+<div class="container">
+</div>
+<hr class="separation-tag" style="margin-top: 20px;margin-bottom:0px">
+<div class="background">
+    <div class="container">
+        <app-conflict-modal [myEmployer]="myEmployerNew" (resEmployer)="resEmployerNew($event)" (viewEmployer)=viewEmployerNew($event)
+            (cancel)="cancelNew()"></app-conflict-modal>
+        <div class="sprk-c-Modal" *ngIf="saveProcess">
+            <div class="sprk-c-Modal__header">
+                <h2 class="sprk-b-Heading sprk-b-Heading--secondary">Please wait while we do something</h2>
+                <div class="sprk-c-Modal__spinner">
+                    <span class="sprk-c-Spinner sprk-c-Spinner--circle sprk-c-Spinner--large rotating"></span>
+                </div>
+            </div>
+            <div class="sprk-c-Modal__body">
+                <p>
+                    <strong>Employer data has been submitted to database successfully.</strong>
+                </p>
+                <p>We are sending your data to our servers.Please don't close this window.</p>
+            </div>
+        </div>
+        <div class="sprk-c-ModalMask" *ngIf="saveProcess"></div>
+
+        <div class="sprk-c-Notification notification-msg" *ngIf="errormsg&&successtype !== 'success'">
+            <div class="sprk-c-Notification__icon sprk-c-Notification__icon--failure">
+                <svg xmlns="http://www.w3.org/2000/svg" id="exclamation" style="width: 24px; height: 20px; fill:white;" viewBox="0 0 1792 1792"
+                    width="100%" height="100%">
+                    <path style="color: white;" d="M 1088 1248 v 224 q 0 26 -19 45 t -45 19 H 768 q -26 0 -45 -19 t -19 -45 v -224 q 0 -26 19 -45 t 45 -19 h 256 q 26 0 45 19 t 19 45 Z m 30 -1056 l -28 768 q -1 26 -20.5 45 t -45.5 19 H 768 q -26 0 -45.5 -19 T 702 960 l -28 -768 q -1 -26 17.5 -45 t 44.5 -19 h 320 q 26 0 44.5 19 t 17.5 45 Z"
+                    />
+                </svg>
+            </div>
+            <div class="sprk-c-Notification__text">
+                <span>{{message}}</span>
+            </div>
+            <button class="sprk-c-Notification__icon sprk-c-Notification__icon--close" (click)="errormsg = false" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 20px; fill:black;" viewBox="0 0 1792 1792" id="times"
+                    width="100%" height="100%">
+                    <path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"></path>
+                </svg>
+            </button>
+        </div>
+        <div class="sprk-c-Notification notification-msg" *ngIf="errormsg && successtype == 'success'">
+            <div class="sprk-c-Notification__icon sprk-c-Notification__icon--success">
+
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 20px; fill:white;" viewBox="0 0 1792 1792" id="check"
+                    width="100%" height="100%">
+                    <path d="M1671 566q0 40-28 68l-724 724-136 136q-28 28-68 28t-68-28l-136-136-362-362q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 295 656-657q28-28 68-28t68 28l136 136q28 28 28 68z"></path>
+                </svg>
+            </div>
+            <div class="sprk-c-Notification__text">
+                <span>{{message}}</span>
+            </div>
+            <button class="sprk-c-Notification__icon sprk-c-Notification__icon--close" (click)="errormsg = false" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" style="width: 24px; height: 20px; fill:black;" viewBox="0 0 1792 1792" id="times"
+                    width="100%" height="100%">
+                    <path d="M1490 1322q0 40-28 68l-136 136q-28 28-68 28t-68-28l-294-294-294 294q-28 28-68 28t-68-28l-136-136q-28-28-28-68t28-68l294-294-294-294q-28-28-28-68t28-68l136-136q28-28 68-28t68 28l294 294 294-294q28-28 68-28t68 28l136 136q28 28 28 68t-28 68l-294 294 294 294q28 28 28 68z"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="employerForm" class="container">
+
+        <div class="row">
+            <div class="col-md-12 add-header">
+                <h1 *ngIf="!editedId" class="float-left col-md-10 sprk-b-Heading sprk-b-Heading--sub heading">
+                    Add New Employer
+                </h1>
+                <h1 *ngIf="editedId" class="float-left col-md-10 sprk-b-Heading sprk-b-Heading--sub heading">
+                    Edit Employer Info
+                </h1>
+
+                <button type="button" id="saveEmpBtn" [disabled]="submitDisable" (click)="postEmployer() " class="btn btn-success col-md-2 s-result"
+                    style="margin-top: 0px;">
+                    <span *ngIf="submitDisable" class="sprk-c-Spinner sprk-c-Spinner--circle rotating">
+                    </span>
+                    <i *ngIf="!submitDisable" class="fa fa-check"></i> Save Employer</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="list-group">
+                    <div class="panel-heading  sprk-b-Heading list-group-item">
+                        <h3>
+                            <b class="label-sub-heading">Employer Information</b>
+                        </h3>
+                    </div>
+                    <div class="list-group-item">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Employer Name*</label>
+                                    <input type="text" maxlength="50" [ngClass]="{'error-input': isFieldValid('name')}" autofocus class="form-control" formControlName="name"
+                                        maxlength="50" tabindex="1" id="name" name="name" required>
+                                    <div id="name" *ngIf="isFieldValid('name')" class="error-msg" style="width:110%">
+                                        Employer Name is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Street Address*</label>
+                                    <input type="text" tabindex="2" maxlength="80" class="form-control" [ngClass]="{'error-input': isFieldValid('addressline1')}"
+                                        formControlName="addressline1" id="addressline1" name="addressline1" required>
+
+                                    <div id="addressline1" *ngIf="isFieldValid('addressline1')" class="error-msg" style="width:110%">
+                                        Street Address is required.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Street Address Line 2(optional)</label>
+                                    <input type="text" tabindex="3" maxlength="80" class="form-control" formControlName="addressline2" id="addressline2" name="addressline2">
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">City*</label>
+                                    <input type="text" tabindex="4" maxlength="80" (keypress)="restrictCharacter($event)" [ngClass]="{'error-input': isFieldValid('city')}"
+                                        class="form-control" formControlName="city" id="city" name="city" required>
+                                    <div id="city" *ngIf="isFieldValid('city')" class="error-msg" style="width:110%">
+                                          City Name is required.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Zip Code*</label>
+                                    <input type="text" tabindex="5"  placeholder="e.g 12345" [textMask]="{mask: zipmask,modelClean: true}" [ngClass]="{'error-input': isFieldValid('zip')}" class="form-control"
+                                        formControlName="zip" id="zip" name="zip" required>
+                                    <div id="reqZip" *ngIf="employerForm.get('zip').invalid && employerForm.controls['zip'].touched" class="error-msg">
+                                        Invalid Zip code.
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-4 float-right">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">State*</label>
+                                    <div ngbDropdown class="dropdown">
+                                        <input type="text" tabindex="6" class="form-control" formControlName="state" [(ngModel)]="state" style="display:none" name="state">
+                                        <button class="btn btn-drp btn-default  drp-state" tabindex="7" id="dropdownState" ngbDropdownToggle [ngClass]="{'btn-error-cust': isFieldValid('state')}"
+                                            style="width:100%">
+                                            {{statename}}
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownState" class="scrollable-menu" style="width: 100%">
+                                            <button class="dropdown-item" tabindex="8" *ngFor="let state of states" (click)="changeState(state.name,state.id)">{{state.name}}</button>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="isFieldValid('state')" class="error-msg">
+                                        Select State.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-md-12">
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Zip+4 Digits(optional)</label>
+                                    <input type="text" tabindex="9" [textMask]="{mask: zipplus4mask,modelClean: true}" class="form-control" formControlName="plus4"
+                                        id="plus4" name="plus4">
+                                </div>
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr  sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact First Name*</label>
+                                    <input type="text" tabindex="10" maxlength="50" (keypress)="restrictCharacter($event)" class="form-control" formControlName="contactfirstname"
+                                        [ngClass]="{'error-input': isFieldValid('contactfirstname')}" id="contactfirstname" name="contactfirstname"
+                                        required>
+                                    <div id="contactfirstname" *ngIf="isFieldValid('contactfirstname')" class="error-msg" style="width:110%">
+                                        Contact First Name is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr  sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Last Name*</label>
+                                    <input type="text" tabindex="11" maxlength="50" (keypress)="restrictCharacter($event)" class="form-control" formControlName="contactlastname"
+                                        [ngClass]="{'error-input': isFieldValid('contactlastname')}" id="contactlastname" name="contactlastname"
+                                        required>
+                                    <div id="contactlastname" *ngIf="isFieldValid('contactlastname')" class="error-msg" style="width:110%">
+                                        Contact Last Name is required.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr  sprk-b-Heading sprk-b-Heading--secondary label-heading">Contact Title*</label>
+                                    <input type="text" tabindex="12" maxlength="50" (keypress)="restrictCharacter($event)" class="form-control" formControlName="contacttitle"
+                                        [ngClass]="{'error-input': isFieldValid('contacttitle')}" id="contacttitle" name="contacttitle"
+                                        required>
+                                    <div id="contacttitle" *ngIf="isFieldValid('contacttitle')" class="error-msg" style="width:110%">
+                                        Contact Title is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Phone Number*</label>
+                                    <input type="tel" tabindex="13" [textMask]="{mask: mask,modelClean: true}" (keypress)="restrictNumeric($event)" class="form-control"
+                                        [ngClass]="{'error-input': isFieldValid('contactphonenumber')}" formControlName="contactphonenumber"
+                                        id="contactphonenumber" name="contactphonenumber" required>
+                                    <div id="reqPhoneNumber" *ngIf="isFieldValid('contactphonenumber') || employerForm.get('contactphonenumber').invalid && employerForm.controls['contactphonenumber'].touched"
+                                        class="error-msg">
+                                        Valid Phone number is required.
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Phone Extension(optional)</label>
+                                    <input type="text" tabindex="14" maxlength="8" (keypress)="restrictNumeric($event)" class="form-control" formControlName="contactphoneextension"
+                                        id="contactphoneextension" name="contactphoneextension">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading sprk-b-Heading--secondary label-heading label-heading">Fax(optional)</label>
+                                    <input type="text" tabindex="15" [textMask]="{mask: mask}" class="form-control" id="contactfaxnumber" name="contactfaxnumber"
+                                        formControlName="contactfaxnumber" [ngClass]="{'error-input': isFieldValid('contactfaxnumber')}">
+                                    <div id="reqFax" *ngIf="employerForm.get('contactfaxnumber').invalid && employerForm.controls['contactfaxnumber'].touched"
+                                        class="error-msg">
+                                        Invalid Fax number.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Email*</label>
+                                    <input type="contactemail" tabindex="16" maxlength="50" [ngClass]="{'error-input': isFieldValid('contactemail')}" class="form-control"
+                                        formControlName="contactemail" id="contactemail" name="contactemail">
+                                    <div id="reqContactEmail" *ngIf="employerForm.get('contactemail').invalid && employerForm.controls['contactemail'].touched"
+                                        class="error-msg">
+                                        Valid Email is required.
+                                    </div>
+                                </div>
+                                <div class="form-group col-md-4 float-right">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Response Time*</label>
+                                    <div ngbDropdown class="dropdown">
+                                        <input type="text" tabindex="17" class="form-control" formControlName="responsetime" [(ngModel)]="responsetime" style="display:none"
+                                            id="responsetime" name="responsetime">
+                                        <button class="btn btn-drp btn-default  drp-resptime" tabindex="18" id="dropdownRespTime" ngbDropdownToggle [ngClass]="{'btn-error-cust': isFieldValid('responsetime')}"
+                                            style="width:100%">
+                                            {{responsetimename}}
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownRespTime" class="scrollable-menu" style="width: 100%">
+                                            <button class="dropdown-item" tabindex="19" *ngFor="let responsetime of responsetimes" (click)="changeRespTime(responsetime.name,responsetime.id)">{{responsetime.name}}</button>
+
+                                        </div>
+                                        <div *ngIf="isFieldValid('responsetime')" class="error-msg">
+                                            Select Response time.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading sprk-b-Heading--secondary label-heading label-heading">EIN(Optional)</label>
+                                    <input type="text" tabindex="20" maxlength="10" class="form-control" formControlName="ein" id="ein" name="ein">
+
+                                </div>
+
+
+                                <div class="form-group col-md-4 float-right">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Eligible for Email Request*</label>
+                                    <div ngbDropdown class="dropdown">
+                                        <input type="text" tabindex="24" class="form-control" formControlName="emailrequesteligible" [(ngModel)]="emailrequesteligible"
+                                            name="emailrequesteligible" style="display:none">
+                                        <button class="btn btn-drp btn-default  drp-resptime" tabindex="25" id="dropdowneligibleforemail" ngbDropdownToggle [ngClass]="{'btn-error-cust': isFieldValid('emailrequesteligible')}"
+                                            style="width:100%">
+                                            {{eforename}}
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdowneligibleforemail" class="scrollable-menu">
+                                            <button class="dropdown-item" tabindex="26" *ngFor="let efore of efores" (click)="changeEligibleForEmailRequest(efore.name,efore.id)">{{efore.name}}</button>
+
+                                        </div>
+                                        <div *ngIf="isFieldValid('emailrequesteligible')" class="error-msg">
+                                            Select Email Request Eligible.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="form-group col-md-4 float-right">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Cert and Auth Required*</label>
+                                    <div ngbDropdown class="dropdown">
+                                        <input type="text" tabindex="21" class="form-control" formControlName="certandauthrequired" [(ngModel)]="certandauthrequired"
+                                            name="certandauthrequired" style="display:none">
+                                        <button class="btn btn-drp btn-default  drp-resptime" tabindex="22" id="dropdownCandRrequired" ngbDropdownToggle [ngClass]="{'btn-error-cust': isFieldValid('certandauthrequired')}"
+                                            style="width:100%">
+                                            {{candaname}}
+                                        </button>
+                                        <div ngbDropdownMenu aria-labelledby="dropdownCandRrequired" class="scrollable-menu">
+                                            <button class="dropdown-item" tabindex="23" *ngFor="let canda of candas" (click)="changeCertAndAuthrequired(canda.name,canda.id)">{{canda.name}}</button>
+
+                                        </div>
+
+                                        <div *ngIf="isFieldValid('certandauthrequired')" class="error-msg">
+                                            Select Cert and Auth Required.
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                
+
+
+                            </div>
+                        </div>
+
+                        <div class=row>
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Phone Verified By*</label>
+                                    <input type="text" tabindex="27" maxlength="100" (keypress)="restrictCharacter($event)" [ngClass]="{'error-input': isFieldValid('phoneverifiedby')}"
+                                        class="form-control" formControlName="phoneverifiedby" id="phoneverifiedby" name="phoneverifiedby">
+                                    <div id="phoneverifiedby" *ngIf="isFieldValid('phoneverifiedby')" class="error-msg">
+                                        Phone Verified By is required.
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class=row>
+                            <div class="col-md-12">
+
+                                <div class="form-group col-md-4 float-left">
+                                    <label class="lbl-clr sprk-b-Heading sprk-b-Heading--secondary label-heading">Comments(optional)</label>
+
+                                    <textarea tabindex="28" class="sprk-b-TextInput sprk-u-Size-100 form-control" formControlName="comments" id="comments" name="comments"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="row" style="margin-bottom:17px">
+            <div class="col-md-12">
+                <h2 class="col-md-10 float-left"></h2>
+                <button type="button" tabindex="29" [disabled]="submitDisable" class="btn btn-success col-md-2 float-left  s-result" (click)="postEmployer()"
+                    style="margin-bottom:20px;">
+                    <span *ngIf="submitDisable" class="sprk-c-Spinner sprk-c-Spinner--circle rotating">
+                    </span>
+                    <i *ngIf="!submitDisable" class="fa fa-check"></i>
+                    Save Employer
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,23 @@
+.title-clr
+{
+   color:#c50008;
+}
+.add-btn-cls
+{
+   text-align: right;
+   margin-top: 24px;
+}
+.separation-tag
+{
+   border-bottom: 1px solid #E5E5E5 !important;
+}
+small{
+   display:block;
+   font-size:12px;
+   letter-spacing:3px;
+   color:#333333;
+}
+.logo:focus
+{
+   outline:none !important;
+}

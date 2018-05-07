@@ -1,0 +1,73 @@
+
+@import "~@sparkdesignsystem/spark-core/settings/_colors.scss";
+@import "~@sparkdesignsystem/spark-core/settings/_settings.scss";
+@import "~@sparkdesignsystem/spark-core/base/_forms.scss";
+@import "~@sparkdesignsystem/spark-core/base/_links.scss";
+@import "~@sparkdesignsystem/spark-core/base/_typography.scss";
+@import "~@sparkdesignsystem/spark-core/components/_notifications.scss";
+@import "~@sparkdesignsystem/spark-core/components/_spinners.scss";
+@import "~@sparkdesignsystem/spark-core/components/_modals.scss";
+.label-heading {
+    font-size: 16px;
+}
+.label-sub-heading {
+    font-size: 33px;
+    color: #0C4569;
+}
+.label-main-heading {
+    font-size: 50px;
+    font-weight: bold;
+}
+.separation-tag{
+    border-bottom: 1px solid #E5E5E5 !important;
+}
+.btn.active.focus, .btn.active:focus, .btn.focus, .btn:active.focus, .btn:active:focus, .btn:focus {
+    outline: none;
+    outline-offset: -2px;
+}
+.error-date {
+  border: 1px solid #af5c6a;
+  background-color: #fdf;
+}
+@-moz-keyframes spin {
+    from { -moz-transform: rotate(0deg); }
+    to { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    from { -webkit-transform: rotate(0deg); }
+    to { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    from {transform:rotate(0deg);}
+    to {transform:rotate(360deg);}
+}
+.rotating {
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 4000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 4000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 4000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    
+     animation-name: spin;
+     animation-duration: 4000ms;
+     animation-iteration-count: infinite;
+     animation-timing-function: linear;
+}
+.ngx-pagination.current {
+    padding: 0.1875rem 0.625rem;
+    background: #1E7AB3 !important;
+    color:  #fefefe !important;
+    cursor: default;
+    border-radius: 8px;
+}
+.ngx-pagination li {
+    display: inline-block;
+    color:  #1E7AB3 ;
+}

@@ -1,0 +1,153 @@
+.lbl-clr
+{
+    color: #2081bf;
+}
+.dropdown-menu
+{
+    width: 80%;
+}
+
+.panel-heading
+{
+    background-color: #fff;
+    color:#0C4569;
+}
+
+.employer{
+    font-family: 'Rozha One', serif; 
+    color: #222;
+    font-size:30px;
+    font-weight: 700;
+}
+.error-msg {
+    color: #a94442;
+  }
+  .error-input
+  {
+    border: 1px solid #af5c6a;
+    background-color: #fdf;
+  }
+  .notification-msg
+  {
+    width: 97%;
+    margin-left: 16px;
+  }
+  .drp-combo::after
+  {
+      float: right;   
+      margin-top: 8px;
+  }
+
+  .drp-combo
+  {
+      width: 60%;
+      text-align: left;
+  }
+  .list-group
+  {
+      margin-bottom: 27px;
+  }
+.drp-combo
+{
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.dropdown-menu li
+{
+    margin-left:7px;
+    cursor:pointer;
+}
+.calender input
+{
+    float: left;
+    width: 80%;
+}
+.calender button
+{
+    height: 37px;
+}
+.s-result {
+    cursor: pointer;   
+}
+
+.lbl-name
+{
+    font-size: 16px !important;
+}
+.label-heading {
+    font-size: 16px !important;
+}
+.label-sub-heading
+{
+    font-size:24px !important;
+}
+.label-main-heading
+{
+    font-size:32px !important;
+}
+.heading
+{
+    font-size:32px !important;
+}
+.btn-success {
+    color: #fff;
+    background-color: #6c9f2e;
+    border-color: #6c9f2e;
+}
+.scrollable-menu{
+    top: 38px;
+    left: auto;
+    /* right: 100%; */
+    width: 100%;
+
+}
+.background
+{
+    background-color: #F9F9F9
+}
+.add-header
+{    top: 10px;
+    margin-bottom: 9px;
+}
+.btn-drp{
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
+.drp-state {   
+    text-align: left;    
+    width:65%;  
+    height:20%;
+}
+
+.drp-resptime {   
+    text-align: left;    
+    width:65%;  
+    height:20%;
+}
+.drp-state::after
+{    
+    margin-top: 10px;
+    position: absolute;   
+    
+    right: 3%; 
+    left: auto;
+}
+
+.drp-resptime::after
+{    
+    margin-top: 10px;
+    position: absolute;   
+    
+    right: 3%; 
+    left: auto;
+}
+.btn-error-cust
+{
+    border: 1px solid #af5c6a !important;
+    background-color: #fdf !important;
+}
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;    
+}

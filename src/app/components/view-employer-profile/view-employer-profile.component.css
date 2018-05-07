@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css?family=Rozha+One');
+.title-clr
+{
+    color:#c50008;
+}
+.add-btn-cls
+{
+    text-align: right;
+    margin-top: 24px;
+    color: #3C7814;
+}
+.drp-caret
+{
+    float: right;   
+    margin-top: 8px;
+}
+.drp-combo
+{
+    width: 60%;
+    text-align: left;
+}
+.lbl-clr
+{
+    color: #1E7AB3;
+}
+.dropdown-menu
+{
+    width: 100%;
+}
+
+
+
+.panel-heading
+{
+    background-color: #fff;
+    color:#0C4569;
+}
+
+.employer{
+    font-family: 'myriad-pro', sans-serif; 
+    color: #222;
+    font-size:30px;
+    font-weight: 700;
+}  
+.error-msg {
+    color: #a94442;
+  }
+  .error-input
+  {
+    border: 1px solid #af5c6a;
+    background-color: #fdf;
+  }
+  .lbl-name
+  {
+    font-family: 'myriad-pro', sans-serif;
+      color:#063a5b;
+      font-size:18px;
+  }
+  .list-group
+  {
+      margin-bottom: 27px;
+  }
+.lbl-name
+{
+    font-size: 16px !important;
+}
+.label-heading {
+    font-size: 16px !important;
+}
+.label-sub-heading
+{
+    font-size:24px !important;
+}
+.label-main-heading
+{
+    font-size:32px !important;
+}
+
+.background
+{
+    background-color: #F9F9F9;
+}
+
+.lbl-name 
+{
+font-family:myriad;
+}

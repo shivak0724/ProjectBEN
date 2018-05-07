@@ -1,0 +1,93 @@
+<ng-template #content let-c="close" let-d="dismiss">
+        <div class="modal-main" id="conflictmodal">
+            <div class="modal-header bg-primary text-white">
+                <b class="label-sub-heading">{{header}}</b>
+                <button type="button" class="close s-result" aria-label="Close" (click)="cancelModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="search-res" *ngIf="!confirmationBox">
+                    <div class="col-md-12">
+                        <label class=" sprk-b-Heading label-heading label-name">
+                            <strong>Create Your Employer</strong>
+                        </label>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="lbl-clr sprk-b-Heading--secondary s-result">
+                            <strong>{{saveData.name}}</strong>
+                        </label>&nbsp;&nbsp;
+                        <label class="lbl-clr sprk-b-Heading--secondary s-result">
+                            <i class="icon-clr s-result" aria-hidden="true"></i>
+                            {{saveData.city}},</label>
+                        <label class="lbl-clr sprk-b-Heading--secondary">
+                            <i class="icon-clr s-result" aria-hidden="true"></i>
+                            {{saveData.state}},</label>
+                            <label class="lbl-clr sprk-b-Heading--secondary">
+                              <i class="icon-clr s-result" aria-hidden="true"></i>
+                              {{saveData.zip}}</label>
+                    </div>
+                    <div class="col-md-12 btn-save" *ngIf="hasOrganizationId">
+                        <button type="button" class="btn btn-success s-result" (click)="continueCreate(saveData)">Continue Editing Employer</button>
+                    </div>
+                    <div class="col-md-12 btn-save" *ngIf="!hasOrganizationId">
+                          <button type="button" class="btn btn-success s-result" (click)="continueCreate(saveData)">Continue Creating New Agent</button>
+                      </div>
+                    <div class="col-md-12" style="border-bottom: 1px solid #e7e3e3; margin-left:2%"></div>
+                    <div class="col-md-12 div-Possible">
+                        <label class=" sprk-b-Heading label-heading label-name">
+                            <strong>Select a Possible Match</strong>
+                </label>
+              </div>
+              <div class="card-main">
+              <div class="card" [ngClass]="{'height-53':isIE}" *ngFor="let data of conflictData" (click)="existingSelect(data)">
+              <div class="col-md-12 card-block card-cust" [ngClass]="{'card-cust-ie':isIE,'card-cust':!isIE}" >
+                <label class="lbl-clr sprk-b-Heading--secondary s-result"
+                [ngClass]="{'match-item':data.nameMatch}">
+                    <strong>{{data.name}}</strong></label>&nbsp;&nbsp;
+                <label class="lbl-clr sprk-b-Heading--secondary s-result" 
+                 [ngClass]="{'match-item':data.cityMatch}">
+                    <i class="icon-clr s-result" aria-hidden="true"></i> 
+                    {{data.city}}</label>
+                    <label class="lbl-clr sprk-b-Heading--secondary s-result">
+                    <i class="icon-clr s-result" aria-hidden="true"></i> 
+                    {{data.state}}</label>
+                <label class="lbl-clr sprk-b-Heading--secondary s-result"
+                  [ngClass]="{'match-item': data.zipMatch}">
+                    <i class="icon-clr s-result" aria-hidden="true"></i>
+                     {{data.zip}}</label>
+               
+              </div>
+            </div>
+          </div>
+           </div>
+           <div class="search-res" *ngIf="confirmationBox" >
+              <div class="col-md-12" >
+                  <label class="lbl-secclr sprk-b-Heading--secondary">
+                      Choosing this existing Employer will discard the new information you entered.</label>
+              </div>
+              <div class="col-md-12 btn-save">
+                  <label class="lbl-clr sprk-b-Heading--secondary s-result">
+                      <strong>{{existingData.name}}</strong></label>&nbsp;&nbsp;
+                  <label class="lbl-clr sprk-b-Heading--secondary s-result">
+                      <i class="icon-clr s-result" aria-hidden="true"></i> 
+                      {{existingData.city}}</label>
+                  <label class="lbl-clr sprk-b-Heading--secondary">
+                      <i class="icon-clr s-result" aria-hidden="true"></i>
+                       {{existingData.state}}</label>
+                       <label class="lbl-clr sprk-b-Heading--secondary">
+                          <i class="icon-clr s-result" aria-hidden="true"></i>
+                           {{existingData.zip}}</label>
+                
+                </div>
+                <div class="col-md-12 btn-save">
+                        <button type="button" id="continueView" class="btn btn-success s-result" (click)="continueView(existingData.organizationId)">Continue</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-primary s-result" (click)="conflictBack()">Go Back</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <button type="button" class="btn btn-link btn-footer s-result" (click)="cancelModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer" *ngIf="!confirmationBox">
+                <button type="button" class="btn btn-link btn-footer s-result" (click)="cancelModal()">Go Back</button>
+            </div>
+        </div>
+      </ng-template>
+      
